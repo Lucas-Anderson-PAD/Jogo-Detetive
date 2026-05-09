@@ -40,7 +40,14 @@ class Tabuleiro {
 	}
 	
 	
-	
+	/**
+	 * Inicia a busca pelos destinos válidos após a rolagem dos dados.
+	 * Cria as coleções vazias ('destinos' e 'caminho') que serão preenchidas
+	 * pela busca recursiva, enviando-as como parâmetro.
+	 * * @param valoresDados Array contendo o resultado dos dados.
+	 * @param idCasaAtual ID da casa de onde o movimento se inicia.
+	 * @return Uma Lista contendo os IDs de todos os destinos finais possíveis.
+	 */
 	public List<Integer> obterDestinosValidos(int[] valoresDados, int idCasaAtual) {
 	    int passosTotais = valoresDados[0] + valoresDados[1];
 	    
@@ -55,6 +62,18 @@ class Tabuleiro {
 	    return new ArrayList<>(destinos);
 	}
 	
+	
+	/**
+	 * Algoritmo recursivo (backtracking) para explorar as rotas no tabuleiro.
+	 * As coleções ('caminho' e 'casasPossiveis') chegam vazias na primeira chamada
+	 * e funcionam como "acumuladores" em memória:
+	 * - 'caminho': guarda o rastro da rota atual para impedir que o peão ande em círculos.
+	 * - 'casasPossiveis': guarda os IDs finais válidos (o uso do Set impede destinos duplicados).
+	 * * @param passosRestantes Quantidade de movimentos que o peão ainda pode dar.
+	 * @param idCasaAtual O ID da casa analisada neste passo da recursão.
+	 * @param caminho Lista com o histórico de casas já pisadas na rota atual.
+	 * @param casasPossiveis Coleção que recebe as casas finais encontradas.
+	 */
 	private void mapearCasasAlcancaveis(int passosRestantes, int idCasaAtual, List<Integer> caminho, Set<Integer> casasPossiveis){
 		Casa casaAtual = todasAsCasas.get(idCasaAtual);
 		
@@ -81,6 +100,13 @@ class Tabuleiro {
 	
 	}
 	
+	/**
+	 * Efetiva a realocação do peão no tabuleiro.
+	 * Atualiza a regra de bloqueio: corredores viram bloqueados ou livres, 
+	 * enquanto cômodos não sofrem restrição de ocupação.
+	 * * @param piao O objeto do peão que será movido.
+	 * @param idNovaCasa O ID do destino final escolhido pelo jogador.
+	 */
 	public void moverPiao(Piao piao ,int idNovaCasa ) {
 		Casa casaAntiga = this.todasAsCasas.get(piao.getIdCasaAtual());
 		Casa casaNova = this.todasAsCasas.get(idNovaCasa);
@@ -92,7 +118,7 @@ class Tabuleiro {
 			casaNova.setOcupada(true);
 		}
 		
-		piao.setIdCasaAtual(idNovaCasa);
+		piao.setIdCasaAtual(idNovaCasa); 	
 	}
 
 }
