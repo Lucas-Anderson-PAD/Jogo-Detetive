@@ -80,5 +80,19 @@ class Tabuleiro {
 		caminho.remove(caminho.size() - 1);		
 	
 	}
+	
+	public void moverPiao(Piao piao ,int idNovaCasa ) {
+		Casa casaAntiga = this.todasAsCasas.get(piao.getIdCasaAtual());
+		Casa casaNova = this.todasAsCasas.get(idNovaCasa);
+		
+		if(!casaAntiga.isComodo()) {
+			casaAntiga.setOcupada(false);
+		}
+		if(!casaNova.isComodo()) {
+			casaNova.setOcupada(true);
+		}
+		
+		piao.setIdCasaAtual(idNovaCasa);
+	}
 
 }
