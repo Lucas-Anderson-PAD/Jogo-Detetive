@@ -15,7 +15,7 @@ public class PiaoTest {
 
 	@Before
 	public void setUp() {
-		suspeitoTeste = new Suspeito(); 
+		suspeitoTeste = Suspeito.SRTA_SCARLET; 
 		piao = new Piao(suspeitoTeste, 1); 
 	}
 

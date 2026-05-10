@@ -17,7 +17,6 @@ class Casa {
         this.vizinhos = new ArrayList<>();
     }
 
-    // Conecta esta casa a outra
     public void addVizinho(int idVizinho) {
         this.vizinhos.add(idVizinho);
     }
@@ -47,9 +46,7 @@ class Casa {
         this.ocupada = ocupada;
     }
 
-    // A Mágica da Regra aqui:
     public boolean isBloqueada() {
-        // Se for cômodo, NUNCA está bloqueada. Se não for, depende do atributo 'ocupada'.
         if (this.ehComodo) {
             return false;
         }
