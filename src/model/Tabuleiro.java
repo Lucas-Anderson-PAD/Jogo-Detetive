@@ -20,7 +20,7 @@ class Tabuleiro {
 		todasAsCasas.put(3,new Casa(3,false));
 		todasAsCasas.put(4,new Casa(4,false));		
 		todasAsCasas.put(5,new Casa(5,true));
-		
+		todasAsCasas.put(6,new Casa(6,true));
 		todasAsCasas.get(1).addVizinho(2);
 		
 		this.todasAsCasas.get(2).addVizinho(1);
@@ -36,7 +36,10 @@ class Tabuleiro {
 	    
 	    // Cômodo 5 liga de volta para o corredor 4
 	    this.todasAsCasas.get(5).addVizinho(4);
-		
+	    
+	    // Comodo no meio do caminho
+	    this.todasAsCasas.get(3).addVizinho(6);
+	    this.todasAsCasas.get(6).addVizinho(3); // Correção: Volta para o corredor
 	}
 	
 	

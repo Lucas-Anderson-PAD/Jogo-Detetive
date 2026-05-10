@@ -163,9 +163,8 @@ public class Jogo {
     
     public static void main(String[] args) {
         Jogo partida = new Jogo();
-        
         System.out.println("--- PREPARAÇÃO DO JOGO ---");
-        System.out.println("Jogador inicial (Regra 7): " + partida.getJogadorAtual().getNome());
+        System.out.println("Jogador inicial : " + partida.getJogadorAtual().getNome());
         
         System.out.println("\n--- CARTAS DISTRIBUÍDAS ---");
         for(Jogador j : partida.jogadores) {
